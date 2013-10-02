@@ -1,10 +1,12 @@
 import System.IO 
+import System.Environment 
 import Data.List
 -- import "a1.hs"
 
 main = do 
     contents <- getContents
-    print (take 10 (sortBy tupleSort (wordCount contents)))
+    args <- getArgs 
+    print (take (read (head args)) (sortBy tupleSort (wordCount contents)))
 
 wordCount :: String -> [(String, Int)]
 wordCount a = let wordlist = group ( sort (words a) ) in (zip (map (head) wordlist) (map (length) wordlist))
