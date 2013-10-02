@@ -7,6 +7,8 @@
 --A list of pairs rolls showing all possible rolls of two six-sided dice.
 --A function counts that takes a list and returns a list of pairs, with each pair containing an element and the number of times it appears.
 --A list of pairs sums, showing how often each sum appears when rolling two six-sided dice.
+import Data.List
+
 
 antepenultimate :: [a] -> a
 antepenultimate xs = xs !! (length xs - 3) 
@@ -26,8 +28,8 @@ duplicates ys = sum [sum [ 1 | y <- ys, y == x] | x <- ys] > (length ys)
 rolls :: [[Int]]
 rolls = [[x, y] | x <- [1..6], y <- [1..6] ]
 
-counts :: Eq a => [a] -> [(a, Int)]
-counts ys = removeDuplicates [(x, sum [ 1 | y <- ys, y == x]) | x <- ys]
+counts :: Ord a => [a] -> [(a, Int)]
+counts ys = let items = group ( sort ys ) in (zip (map (head) items) (map (length) items))
 
 removeDuplicates :: Eq a => [a] -> [a]
 removeDuplicates [] = []
