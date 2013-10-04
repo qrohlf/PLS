@@ -1,3 +1,4 @@
+--sequential version
 import Control.Parallel
 import Control.Parallel.Strategies
 
