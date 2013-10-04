@@ -4,7 +4,7 @@ import System.Environment
 real_area = (pi * r^2)/2
     where r = 1
 
-height x = sqrt(1 - x^2)
+height x = sqrt(abs(1 - x^2))
 
 area n = 4 * sum(rectangles n 0 1)
 
