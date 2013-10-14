@@ -7,3 +7,7 @@ instance (Show a) => Show (Tree a) where
 
 show' n (Node a children) = "\n " ++ replicate n ' '  ++ show a  ++ foldl1 (++) (map (show' (n+1)) children)
 show' n (Leaf a) = "\n "++replicate n ' '  ++ show a
+
+instance Functor Tree where
+    fmap f (Leaf a) = Leaf (f a)
+    fmap f (Node a children) = Node ( f a) (map (fmap f) children)
