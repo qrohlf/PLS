@@ -10,7 +10,7 @@ data Tree a = Leaf {value :: a} | Node {value :: a, children :: [Tree a]}
 
 instance (Show a) => Show (Tree a) where
     show (Leaf a) = show a
-    show (Node a children ) =  show a ++ foldl1 (++) (map (show' 1 ) children)
+    show (Node a children ) =  show a ++ foldl1 (++) (map (show' 0 ) children)
 
 show' n (Node a children) = "\n " ++ replicate n ' '  ++ show a  ++ foldl1 (++) (map (show' (n+1)) children)
 show' n (Leaf a) = "\n "++replicate n ' '  ++ show a
